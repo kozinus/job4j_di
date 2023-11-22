@@ -2,6 +2,8 @@ package ru.job4j.javacodebased;
 
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,8 @@ public class Person {
     }
 
     @Autowired
-    public Person(String name, Dog dog, Cat cat, Canary canary, Parrot parrot) {
+    public Person(@Value("Man") String name, @Qualifier("myDog") Dog dog,
+                  Cat cat, Canary canary, Parrot parrot) {
         this.name = name;
         this.dog = dog;
         this.cat = cat;
