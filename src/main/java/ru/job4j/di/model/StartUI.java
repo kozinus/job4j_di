@@ -1,11 +1,10 @@
 package ru.job4j.di.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class StartUI {
 
     private Store store;
+
+    private final ConsoleInput consoleInput = new ConsoleInput();
 
     public StartUI(Store store) {
         this.store = store;
@@ -16,6 +15,8 @@ public class StartUI {
     }
 
     public void print() {
-        store.getAll().forEach(System.out::println);
+        for (String value : store.getAll()) {
+            System.out.println(value);
+        }
     }
 }
